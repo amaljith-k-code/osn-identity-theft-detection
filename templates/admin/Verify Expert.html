@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Expert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f8fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e1e8ed;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .table-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            text-align: left;
+            padding: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e1e8ed;
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .photo-cell {
+            text-align: center;
+        }
+
+        .photo-placeholder {
+            width: 60px;
+            height: 60px;
+            background-color: #ecf0f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: #7f8c8d;
+        }
+
+
+            /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #2c81ba;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .accept-btn, .reject-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .accept-btn {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .accept-btn:hover {
+            background-color: #27ae60;
+        }
+
+        .reject-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .reject-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .empty-row td {
+            text-align: center;
+            color: #95a5a6;
+            padding: 40px;
+            font-style: italic;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #95a5a6;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid #e1e8ed;
+        }
+
+        @media (max-width: 768px) {
+            .table-container {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 700px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+           <!-- ★ BACK BUTTON ADDED -->
+        <div class="back-btn">
+            <i class="fas fa-arrow-left"></i>  <a href="/myapp/admin_home/" style="text-decoration: none">Back</a>
+
+        </div>
+
+
+        <header>
+            <h1><i class="fas fa-user-check"></i> Verify Expert</h1>
+            <p class="subtitle">Review and approve expert applications</p>
+        </header>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Place</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Photo</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for i in data %}
+                    <tr class="empty-row">
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.place }}</td>
+                        <td>{{ i.phone}}</td>
+                        <td>{{ i.email }}</td>
+                        <td><img src="{{ i.photo.url }} " height="80" width="80" alt=""></td>
+                        <td>
+                            {% if i.status == 'pending' %}
+                                <a href="/myapp/AcceptExpert/{{ i.id }}/" class="back-btn">Accept</a>  <a href="/myapp/RejectExpert/{{ i.id }}/" class="back-btn">Reject</a>
+                            {% elif i.status == 'Accepted' %}
+                                 <a href="/myapp/RejectExpert/{{ i.id }}/" class="back-btn">Reject</a>
+                                {% else %}
+                                {{ i.status }}
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <p>Expert Verification System &copy; 2023 | All applications are confidential</p>
+        </footer>
+    </div>
+</body>
+</html>

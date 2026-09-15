@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Register Form</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f4f4f4;
+    }
+
+    .wrapper {
+      width: 400px;
+      padding: 25px 30px;
+      background: #ffffff;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .wrapper h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .input-box {
+      margin: 15px 0;
+    }
+
+    .input-box input,
+    .input-box textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #333;
+      outline: none;
+    }
+
+    .input-box textarea {
+      resize: none;
+      height: 90px;
+    }
+
+    .gender-options {
+      display: flex;
+      gap: 10px;
+      margin-top: 5px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .gender-options label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .button {
+      width: 100%;
+      padding: 12px;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .button:hover {
+      background: #444;
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .remember-forgot a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .register-link a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <form action="/myapp/expert_register_post/" method="post" enctype="multipart/form-data">
+      <h1>Register</h1>
+
+      <div class="input-box">
+        <input type="text" placeholder="Full Name" required name="name"/>
+      </div>
+
+      <div class="input-box">
+        <input type="date" required name="DOB"/>
+      </div>
+
+      <div class="input-box">
+        <label>Gender:</label>
+        <div class="gender-options">
+          <label><input type="radio" name="gender" value="male" required /> Male</label>
+          <label><input type="radio" name="gender" value="female" /> Female</label>
+          <label><input type="radio" name="gender" value="other" /> Other</label>
+        </div>
+      </div>
+
+      <div class="input-box">
+        <input type="email" placeholder="Email Address" required name="email"/>
+      </div>
+
+      <div class="input-box">
+        <input type="tel" placeholder="Phone Number" minlength="1" maxlength="10" required name="phone"/>
+      </div>
+
+
+      <div class="input-box">
+        <label>Upload Photo:</label>
+        <input type="file" accept="image/*" required name="photo"/>
+      </div>
+
+      <div class="input-box">
+        <input type="text" placeholder="Username" required name="username"/>
+      </div>
+
+      <div class="input-box">
+        <input type="password" placeholder="Password" required name="password"/>
+      </div>
+       <div class="input-box">
+           <input type="place" placeholder="place" required name="place"/>
+       </div>
+
+      <div class="remember-forgot">
+        <label><input type="checkbox" /> Remember me</label>
+        <a href="#">Forgot Password?</a>
+      </div>
+
+
+      <button type="submit" class="button">Register</button>
+
+      <div class="register-link">
+        <p>Already have an account? <a href="/myapp/login_get/">Login</a></p>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
