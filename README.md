@@ -394,98 +394,45 @@ This implementation is currently **rule-based keyword detection**, rather than a
 
 
 
-## Project Structure
-
-
-
-```text
-
 osn-identity-theft-detection/
-
-â”‚
-
-â”œâ”€â”€ flutter_app/
-
-â”‚   â””â”€â”€ Flutter frontend
-
-â”‚
-
-â”œâ”€â”€ myapp/
-
-â”‚   â”œâ”€â”€ models.py
-
-â”‚   â”œâ”€â”€ views.py
-
-â”‚   â”œâ”€â”€ urls.py
-
-â”‚   â”œâ”€â”€ recognize_face.py
-
-â”‚   â”œâ”€â”€ predict_fn.py
-
-â”‚   â””â”€â”€ ...
-
-â”‚
-
-â”œâ”€â”€ osm/
-
-â”‚   â””â”€â”€ Django project configuration
-
-â”‚
-
-â”œâ”€â”€ templates/
-
-â”‚   â””â”€â”€ HTML templates
-
-â”‚
-
-â”œâ”€â”€ static/
-
-â”‚   â””â”€â”€ Static files
-
-â”‚
-
-â”œâ”€â”€ screenshots/
-
-â”‚   â”œâ”€â”€ frontend/
-
-â”‚   â”‚   â”œâ”€â”€ home.png
-
-â”‚   â”‚   â”œâ”€â”€ login.png
-
-â”‚   â”‚   â”œâ”€â”€ profile.png
-
-â”‚   â”‚   â””â”€â”€ register.png
-
-â”‚   â”‚
-
-â”‚   â”œâ”€â”€ expert/
-
-â”‚   â”‚   â””â”€â”€ expert.png
-
-â”‚   â”‚
-
-â”‚   â””â”€â”€ admin/
-
-â”‚       â””â”€â”€ admin.png
-
-â”‚
-
-â”œâ”€â”€ bullying_keywords.csv
-
-â”œâ”€â”€ manage.py
-
-â”œâ”€â”€ requirements.txt
-
-â””â”€â”€ README.md
-
-```
-
-
-
----
-
-
-
+|
+|-- flutter_app/
+|   `-- Flutter frontend
+|
+|-- myapp/
+|   |-- models.py
+|   |-- views.py
+|   |-- urls.py
+|   |-- recognize_face.py
+|   |-- predict_fn.py
+|   `-- ...
+|
+|-- osm/
+|   `-- Django project configuration
+|
+|-- templates/
+|   `-- HTML templates
+|
+|-- static/
+|   `-- Static files
+|
+|-- screenshots/
+|   |-- frontend/
+|   |   |-- home.png
+|   |   |-- login.png
+|   |   |-- profile.png
+|   |   `-- register.png
+|   |
+|   |-- expert/
+|   |   `-- expert.png
+|   |
+|   `-- admin/
+|       `-- admin.png
+|
+|-- bullying_keywords.csv
+|-- manage.py
+|-- requirements.txt
+`-- README.md
 ## Main Database Entities
 
 
